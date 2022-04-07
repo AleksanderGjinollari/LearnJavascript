@@ -31,24 +31,49 @@ const restaurant = {
   },
 };
 
-const arr = [2, 3, 4];
-const a = arr[0];
-const b = arr[1];
-const c = arr[2];
+const { name, openingHours, categories } = restaurant;
+console.log(name, openingHours, categories);
 
-const [x, y, z] = arr;
-console.log(x, y, z);
+const {
+  name: restaurantName,
+  openingHours: hours,
+  categories: tags,
+} = restaurant;
+console.log(restaurantName, hours, tags);
 
-let [first, , second] = restaurant.categories;
-console.log(first, second);
+const { menu = [], starterMenu: starters = [] } = restaurant;
+console.log(menu, starters);
 
-[first, second] = [second, first];
+// Mutating variables
+let a = 111;
+let b = 999;
+const obj = { a: 23, b: 7, c: 14 };
+({ a, b } = obj);
+console.log(a, b);
 
-console.log(first, second);
+// Nested objects
+const {
+  fri: { open: o, close: c },
+} = openingHours;
+console.log(o, c);
+// const arr = [2, 3, 4];
+// const a = arr[0];
+// const b = arr[1];
+// const c = arr[2];
 
-const nested = [2, 4, [5, 6]];
-const [i, , [j, k]] = nested;
-console.log(i, j, k);
+// const [x, y, z] = arr;
+// console.log(x, y, z);
 
-const [p, q, r] = [8, 9];
-console.log(p, q, r);
+// let [first, , second] = restaurant.categories;
+// console.log(first, second);
+
+// [first, second] = [second, first];
+
+// console.log(first, second);
+
+// const nested = [2, 4, [5, 6]];
+// const [i, , [j, k]] = nested;
+// console.log(i, j, k);
+
+// const [p, q, r] = [8, 9];
+// console.log(p, q, r);
