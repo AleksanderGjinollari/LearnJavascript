@@ -83,5 +83,5 @@ console.log('' || 'Jonas');
 console.log(true || 'Jonas');
 console.log(undefined || null);
 
-console.log(undefined || 0 || '' || 'Hello' || 23 || null);
 // will console.log Hello
+console.log(undefined || 0 || '' || 'Hello' || 23 || null);
