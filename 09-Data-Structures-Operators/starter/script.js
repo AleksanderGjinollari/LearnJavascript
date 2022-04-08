@@ -77,3 +77,11 @@ console.log(o, c);
 
 // const [p, q, r] = [8, 9];
 // console.log(p, q, r);
+
+console.log(3 || 'Jonas');
+console.log('' || 'Jonas');
+console.log(true || 'Jonas');
+console.log(undefined || null);
+
+console.log(undefined || 0 || '' || 'Hello' || 23 || null);
+// will console.log Hello
