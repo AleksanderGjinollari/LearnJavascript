@@ -85,3 +85,9 @@ console.log(undefined || null);
 
 // will console.log Hello
 console.log(undefined || 0 || '' || 'Hello' || 23 || null);
+
+restaurant.numGuests = 0;
+const guests = restaurant.numGuests || 10;
+//Nullish : null and undefined
+const guestCorrect = restaurant.numGuests ?? 10;
+console.log(guestCorrect);
