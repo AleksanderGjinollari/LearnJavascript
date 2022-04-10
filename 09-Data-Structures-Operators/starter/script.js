@@ -191,14 +191,17 @@ printGoals('gnabry');
 team1 < team2 && console.log('Team 1 is more likely to win');
 team2 < team1 && console.log('Team 1 is more likely to win');
 
-let goalNumber = 1;
-for (const scorer of game.scored) {
-  console.log(`Goal ${goalNumber++} ${scorer}`);
-}
+// My solution challenge 1
+// let goalNumber = 1;
+// for (const scorer of game.scored) {
+//   console.log(`Goal ${goalNumber++} ${scorer}`);
+// }
 
-let mean = array => {
-  let arraySum = sum(array);
-  return arraySum / array.length;
-};
+for (const [i, player] of game.scored.entries())
+  console.log(`Goal ${i + 1}: ${player}`);
 
-console.log(mean(12, 23));
+const odds = Object.values(game.odds);
+let average = 0;
+for (const odd of odds) average += odd;
+average /= odds.length;
+console.log(average);
