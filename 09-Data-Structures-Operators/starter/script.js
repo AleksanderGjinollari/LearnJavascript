@@ -255,3 +255,27 @@ console.log(rest.has('categories'));
 rest.delete(2);
 console.log(rest);
 console.log(rest.size);
+
+const question = new Map([
+  ['question', 'what is the best programming language?'],
+  [1, 'C'],
+  [2, 'Java'],
+  [3, 'Javascript'],
+  ['correct', 3],
+  [true, 'Correct'],
+  [false, 'Try again'],
+]);
+console.log(question);
+const hoursMap = new Map(Object.entries(openingHours));
+console.log(hoursMap);
+
+//Quiz app
+console.log(question.get('question'));
+for (const [key, value] of question) {
+  if (typeof key === 'number') console.log(`Answer ${key}: ${value}`);
+}
+const answer = Number(prompt('Your answer'));
+console.log(answer);
+answer === question.get('correct')
+  ? console.log(question.get(true))
+  : console.log(question.get(false));
