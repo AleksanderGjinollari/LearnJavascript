@@ -275,7 +275,9 @@ for (const [key, value] of question) {
   if (typeof key === 'number') console.log(`Answer ${key}: ${value}`);
 }
 const answer = Number(prompt('Your answer'));
-console.log(answer);
-answer === question.get('correct')
-  ? console.log(question.get(true))
-  : console.log(question.get(false));
+// console.log(answer);
+// answer === question.get('correct')
+// //   ? console.log(question.get(true))
+//   : console.log(question.get(false));
+
+console.log(question.get(question.get('correct') === answer));
