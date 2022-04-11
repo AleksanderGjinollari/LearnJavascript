@@ -236,48 +236,68 @@ console.log(restaurant.order);
 // console.log(staffUnique);
 // console.log(new Set('Aleksander Gjinollari').size);
 
-const rest = new Map();
-rest.set('name', 'Classico Italiano');
-rest.set(1, 'Firenze, Italy');
-console.log(rest.set(2, 'Lisbon, Portugal'));
+// const rest = new Map();
+// rest.set('name', 'Classico Italiano');
+// rest.set(1, 'Firenze, Italy');
+// console.log(rest.set(2, 'Lisbon, Portugal'));
 
-rest
-  .set('categories', ['Italian,', 'Pizzeria', 'Vegetarian', 'Organic'])
-  .set('open', 11)
-  .set('close', 23)
-  .set(true, 'We are open')
-  .set(false, 'We are closed');
+// rest
+//   .set('categories', ['Italian,', 'Pizzeria', 'Vegetarian', 'Organic'])
+//   .set('open', 11)
+//   .set('close', 23)
+//   .set(true, 'We are open')
+//   .set(false, 'We are closed');
 
-const time = 21;
-console.log(rest.get(time > rest.get('open') && time < rest.get('close')));
+// const time = 21;
+// console.log(rest.get(time > rest.get('open') && time < rest.get('close')));
 
-console.log(rest.has('categories'));
-rest.delete(2);
-console.log(rest);
-console.log(rest.size);
+// console.log(rest.has('categories'));
+// rest.delete(2);
+// console.log(rest);
+// console.log(rest.size);
 
-const question = new Map([
-  ['question', 'what is the best programming language?'],
-  [1, 'C'],
-  [2, 'Java'],
-  [3, 'Javascript'],
-  ['correct', 3],
-  [true, 'Correct'],
-  [false, 'Try again'],
+// const question = new Map([
+//   ['question', 'what is the best programming language?'],
+//   [1, 'C'],
+//   [2, 'Java'],
+//   [3, 'Javascript'],
+//   ['correct', 3],
+//   [true, 'Correct'],
+//   [false, 'Try again'],
+// ]);
+// console.log(question);
+// const hoursMap = new Map(Object.entries(openingHours));
+// console.log(hoursMap);
+
+// //Quiz app
+// console.log(question.get('question'));
+// for (const [key, value] of question) {
+//   if (typeof key === 'number') console.log(`Answer ${key}: ${value}`);
+// }
+// const answer = Number(prompt('Your answer'));
+// // console.log(answer);
+// // answer === question.get('correct')
+// // //   ? console.log(question.get(true))
+// //   : console.log(question.get(false));
+
+// console.log(question.get(question.get('correct') === answer));
+
+const gameEvents = new Map([
+  [17, '⚽ GOAL'],
+  [36, '🔁 Substitution'],
+  [47, '⚽ GOAL'],
+  [61, '🔁 Substitution'],
+  [64, '🔶 Yellow card'],
+  [69, '🔴 Red card'],
+  [70, '🔁 Substitution'],
+  [72, '🔁 Substitution'],
+  [76, '⚽ GOAL'],
+  [80, '⚽ GOAL'],
+  [92, '🔶 Yellow card'],
 ]);
-console.log(question);
-const hoursMap = new Map(Object.entries(openingHours));
-console.log(hoursMap);
 
-//Quiz app
-console.log(question.get('question'));
-for (const [key, value] of question) {
-  if (typeof key === 'number') console.log(`Answer ${key}: ${value}`);
-}
-const answer = Number(prompt('Your answer'));
-// console.log(answer);
-// answer === question.get('correct')
-// //   ? console.log(question.get(true))
-//   : console.log(question.get(false));
-
-console.log(question.get(question.get('correct') === answer));
+// 1
+const events = [...new Set(gameEvents.values())];
+console.log(events);
+console.log(gameEvents.delete(64));
+console.log(gameEvents);
