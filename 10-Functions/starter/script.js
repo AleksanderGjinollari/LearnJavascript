@@ -44,20 +44,31 @@
 // newPassport(jonas);
 // checkIn(flight, jonas);
 
-const oneWord = str => {
-  return str.replace(/ /g, '').toLowerCase();
+// const oneWord = str => {
+//   return str.replace(/ /g, '').toLowerCase();
+// };
+
+// const upperFirstWord = str => {
+//   const [first, ...others] = str.split(' ');
+//   return [first.toUpperCase(), ...others].join(' ');
+// };
+
+// const transformer = (str, fn) => {
+//   console.log(`Original string: ${str}`);
+//   console.log(`Transformed string ${fn(str)}`);
+//   console.log(`Transformed by: ${fn.name}`);
+// };
+
+// transformer(`Javascript is the best!`, upperFirstWord);
+// transformer(`Javascript is the best!`, oneWord);
+
+const greet = greeting => {
+  return name => {
+    console.log(`${greeting} ${name}`);
+  };
 };
 
-const upperFirstWord = str => {
-  const [first, ...others] = str.split(' ');
-  return [first.toUpperCase(), ...others].join(' ');
-};
+const greeterHey = greet('Hey');
+greeterHey('Alex');
 
-const transformer = (str, fn) => {
-  console.log(`Original string: ${str}`);
-  console.log(`Transformed string ${fn(str)}`);
-  console.log(`Transformed by: ${fn.name}`);
-};
-
-transformer(`Javascript is the best!`, upperFirstWord);
-transformer(`Javascript is the best!`, oneWord);
+greet('Hello')('Jonas');
