@@ -72,3 +72,4 @@ const greeterHey = greet('Hey');
 greeterHey('Alex');
 
 greet('Hello')('Jonas');
+console.log('Jonas');
