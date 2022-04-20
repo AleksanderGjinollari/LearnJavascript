@@ -62,6 +62,35 @@
 // transformer(`Javascript is the best!`, upperFirstWord);
 // transformer(`Javascript is the best!`, oneWord);
 
+const lufthansa = {
+  airline: 'Lufthansa',
+  iataCode: 'LH',
+  bookings: [],
+
+  book(flightNum, name) {
+    console.log(
+      `${name} booked a seat on ${this.airline} flight ${this.iataCode}${flightNum}`
+    );
+    this.bookings.push({ flight: `${this.iataCode}${flightNum}`, name });
+  },
+};
+
+lufthansa.book(239, 'Aleksander Gjinollari');
+
+const eurowings = {
+  airline: 'Eurowings',
+  iataCode: 'EW',
+  bookings: [],
+};
+
+const swiss = {
+  airline: 'Swiss Airlines',
+  iataCode: 'SA',
+  bookings: [],
+};
+
+const book = lufthansa.book;
+
 const greet = greeting => {
   return name => {
     console.log(`${greeting} ${name}`);
@@ -73,3 +102,12 @@ greeterHey('Alex');
 
 greet('Hello')('Jonas');
 console.log('Jonas');
+
+const bookEW = book.bind(eurowings);
+const bookLH = book.bind(lufthansa);
+const bookLX = book.bind(swiss);
+bookEW(23, 'StevenWilliams');
+
+const bookEW23 = book.bind(eurowings, 23);
+bookEW23('Jonas');
+bookEW23('Martha');
