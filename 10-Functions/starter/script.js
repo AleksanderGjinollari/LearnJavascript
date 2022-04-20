@@ -174,3 +174,14 @@ document
   .addEventListener('click', poll.registerNewAnswer.bind(poll));
 
 poll.displayResults.call({ answers: [5, 2, 3] }, 'string');
+
+const runOnce = function () {
+  console.log('This will never run again');
+};
+
+runOnce();
+(function () {
+  console.log('This will never run again');
+})();
+
+(() => console.log('This will ALSO never run again'))();
