@@ -74,3 +74,42 @@ const currencies = new Map([
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 /////////////////////////////////////////////////
+
+// Slice method
+// Returns a new array
+let arr = ['a', 'b', 'c', 'd', 'e'];
+console.log(arr.slice(2));
+console.log(arr.slice(2, 4));
+console.log(arr.slice(-2));
+console.log(arr.slice(-1));
+console.log(arr.slice(1, -1));
+console.log(arr.slice());
+
+// Splice method
+// Deletes elements from the original array
+console.log(arr.splice(2));
+console.log('arr');
+
+// Reverse method
+// Reverses the origininal array too
+arr = ['a', 'b', 'c', 'd', 'e'];
+const arr2 = ['j', 'i', 'h', 'g', 'f'];
+console.log(arr2.reverse());
+
+// Concat
+// joins two arrays together
+const letters = arr.concat(arr2);
+console.log(letters);
+console.log([...arr, ...arr2]);
+
+// Join
+console.log(letters.join(' - '));
+
+// At method
+const arr3 = [23, 11, 64];
+console.log(arr3[0]);
+
+console.log(arr3.at(0));
+console.log(arr3[arr3.length - 1]);
+console.log(arr3.slice(-1)[0]);
+console.log(arr3.at(-1));
