@@ -160,3 +160,21 @@ displayMovements(account1.movements);
 // currenciesUnique.forEach(function (value, key, map) {
 //   console.log(`${key}: ${value}`);
 // });
+
+const dogsJulia = [9, 16, 6, 8, 3];
+const onlyDogsJulia = dogsJulia.slice(1, 3);
+console.log(onlyDogsJulia);
+const dogsKate = [10, 5, 6, 1, 4];
+
+const checkDogs = (arr1, arr2) => {
+  const allDogs = arr1.concat(arr2);
+  allDogs.forEach(function (dog, dogNumber) {
+    console.log(
+      `Dog number ${dogNumber + 1} is ${dog} years old and ${
+        dog >= 3 ? 'an adult' : 'a puppy'
+      }`
+    );
+  });
+};
+
+console.log(checkDogs(onlyDogsJulia, dogsKate));
