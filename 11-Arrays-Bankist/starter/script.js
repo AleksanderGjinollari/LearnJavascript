@@ -76,6 +76,18 @@ const displayMovements = function (movements) {
   });
 };
 displayMovements(account1.movements);
+
+const createUsernames = function (accs) {
+  accs.forEach(function (acc) {
+    acc.username = acc.owner
+      .toLowerCase()
+      .split(' ')
+      .map(name => name[0])
+      .join('');
+  });
+};
+createUsernames(accounts);
+console.log(accounts);
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
@@ -161,20 +173,43 @@ displayMovements(account1.movements);
 //   console.log(`${key}: ${value}`);
 // });
 
-const dogsJulia = [9, 16, 6, 8, 3];
-const onlyDogsJulia = dogsJulia.slice(1, 3);
-console.log(onlyDogsJulia);
-const dogsKate = [10, 5, 6, 1, 4];
+// const dogsJulia = [9, 16, 6, 8, 3];
+// const onlyDogsJulia = dogsJulia.slice(1, 3);
+// console.log(onlyDogsJulia);
+// const dogsKate = [10, 5, 6, 1, 4];
 
-const checkDogs = (arr1, arr2) => {
-  const allDogs = arr1.concat(arr2);
-  allDogs.forEach(function (dog, dogNumber) {
-    console.log(
-      `Dog number ${dogNumber + 1} is ${dog} years old and ${
-        dog >= 3 ? 'an adult' : 'a puppy'
-      }`
-    );
-  });
-};
+// const checkDogs = (arr1, arr2) => {
+//   const allDogs = arr1.concat(arr2);
+//   allDogs.forEach(function (dog, dogNumber) {
+//     console.log(
+//       `Dog number ${dogNumber + 1} is ${dog} years old and ${
+//         dog >= 3 ? 'an adult' : 'a puppy'
+//       }`
+//     );
+//   });
+// };
 
-console.log(checkDogs(onlyDogsJulia, dogsKate));
+// console.log(checkDogs(onlyDogsJulia, dogsKate));
+
+// const eurToUsd = 1.1;
+
+// const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+
+// const movementsUSD = movements.map(mov => mov * eurToUsd);
+
+// console.log(movements);
+// console.log(movementsUSD);
+
+// const movementsUSDfor = [];
+// for (const mov of movements) movementsUSDfor.push(mov * eurToUsd);
+// console.log(movementsUSDfor);
+
+// const movementsDescription = movements.map((mov, i) => {
+//   if (mov > 0) {
+//     return `Movement ${i + 1}: You deposited ${mov}`;
+//   } else {
+//     return `Movement ${i + 1}: You withdrew ${Math.abs(mov)}`;
+//   }
+// });
+
+// console.log(movementsDescription);
