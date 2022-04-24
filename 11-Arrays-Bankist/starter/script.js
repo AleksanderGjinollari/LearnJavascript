@@ -61,6 +61,7 @@ const inputLoanAmount = document.querySelector('.form__input--loan-amount');
 const inputCloseUsername = document.querySelector('.form__input--user');
 const inputClosePin = document.querySelector('.form__input--pin');
 
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 const displayMovements = function (movements) {
   containerMovements.innerHTML = '';
   movements.forEach(function (mov, i) {
@@ -88,6 +89,23 @@ const createUsernames = function (accs) {
 };
 createUsernames(accounts);
 console.log(accounts);
+// accumulator -> SNOWBALL
+const balance = movements.reduce(function (acc, cur, i, arr) {
+  console.log(`Iteration ${i}: ${acc}`);
+  return acc + cur;
+}, 0);
+console.log(balance);
+
+let balance2 = 0;
+for (const mov of movements) balance2 += mov;
+console.log(balance2);
+
+const calcAndDisplayBalance = function (movements) {
+  const balance = movements.reduce((acc, mov) => acc + mov, 0);
+  labelBalance.textContent = `${balance} EUR`;
+};
+calcAndDisplayBalance(account1.movements);
+
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
@@ -193,8 +211,6 @@ console.log(accounts);
 
 const eurToUsd = 1.1;
 
-const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
-
 const movementsUSD = movements.map(mov => mov * eurToUsd);
 
 console.log(movements);
@@ -228,3 +244,10 @@ const withdrawals = movements.filter(mov => {
   return mov < 0;
 });
 console.log(withdrawals);
+
+// Maximum value
+const max = movements.reduce((acc, mov) => {
+  if (acc > mov) return acc;
+  else return mov;
+}, movements[0]);
+console.log(max);
