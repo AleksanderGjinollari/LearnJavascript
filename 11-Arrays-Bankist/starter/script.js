@@ -291,3 +291,16 @@ movements.sort((a, b) => {
   if (b > a) return 1;
 });
 console.log(movements);
+
+const x = new Array(7);
+console.log(x);
+
+x.fill(1, 3, 5);
+console.log(x);
+
+// Array.from
+const y = Array.from({ length: 7 }, () => 1);
+console.log(y);
+
+const z = Array.from({ length: 7 }, (_, i) => i + 1);
+console.log(z);
