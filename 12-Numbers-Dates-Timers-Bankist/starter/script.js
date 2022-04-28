@@ -356,3 +356,29 @@ const PI = 3.1415;
 console.log(PI);
 
 console.log(Number('230000'));
+
+// BigInt
+
+console.log(2 ** 53 - 1);
+console.log(Number.MAX_SAFE_INTEGER);
+
+console.log(4564848451161156521521515565n);
+console.log(BigInt(4564848451161156521521515565));
+
+// Operations with bigInt
+console.log(10000n + 100000n);
+console.log(1514665145155512153535n * 10000000000n);
+
+const huge = 5612635145654118654165841n;
+const num = 23;
+console.log(huge * BigInt(num));
+
+console.log(20n > 15);
+console.log(20n === 20);
+console.log(typeof 20n);
+
+console.log(huge + 'is REALLY big');
+
+// Divisions
+console.log(11n / 3n);
+console.log(10 / 3);
