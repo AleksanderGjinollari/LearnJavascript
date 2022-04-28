@@ -343,3 +343,16 @@ labelBalance.addEventListener('click', function () {
     if (i % 3 === 0) row.style.backgroundColor = 'blue';
   });
 });
+
+// 287,460,000,000
+const diameter = 287_460_000_000;
+console.log(diameter);
+
+const priceCents = 345_99;
+
+const transferFee = 15_00;
+
+const PI = 3.1415;
+console.log(PI);
+
+console.log(Number('230000'));
