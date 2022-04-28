@@ -317,3 +317,29 @@ console.log(Math.floor(-23.9));
 console.log((2.7).toFixed(0));
 console.log((2.7).toFixed(3));
 console.log((2.745).toFixed(2));
+
+// Reminder Operator
+
+console.log(5 % 2); // 2 + 2 Reminder 1
+console.log(5 / 2); // 5 = 2 * 2 + 1
+
+console.log(8 % 3);
+console.log(8 / 3);
+
+console.log(6 % 2);
+console.log(6 / 2);
+
+console.log(7 % 2);
+console.log(7 / 2);
+
+// check if a number is even
+const isEven = n => n % 2 === 0;
+console.log(isEven(8));
+console.log(isEven(23));
+
+labelBalance.addEventListener('click', function () {
+  [...document.querySelectorAll('.movements__row')].forEach(function (row, i) {
+    if (i % 2 === 0) row.style.backgroundColor = 'lightblue';
+    if (i % 3 === 0) row.style.backgroundColor = 'blue';
+  });
+});
