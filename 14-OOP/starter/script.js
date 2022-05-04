@@ -1,12 +1,13 @@
 'use strict';
-User {
-  user
-  password
-  email
-  login(password){
-    //login logic
-  }
-  sendMessage(str) {
-    //Sending logic
-  }
-}
+
+const Person = function (firstName, birthYear) {
+  this.firstName = firstName;
+  this.birthYear = birthYear;
+};
+
+const jonas = new Person('Jonas', 1991);
+console.log(jonas);
+// 1. New {} is created
+// 2. function is called, this = {}
+// 3. {} is linked to prototype
+// 4. function automatically retyrns {}
