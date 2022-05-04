@@ -1,13 +1,19 @@
 'use strict';
 
-const Person = function (firstName, birthYear) {
-  this.firstName = firstName;
-  this.birthYear = birthYear;
-  // Never create a method inside a constructor
-  // this.calcAge = function () {
-  //   console.log(2037 - this.birthYear);
-  // };
-};
+class Person {
+  constructor(firstName, birthYear) {
+    this.firstName = firstName;
+    this.birthYear = birthYear;
+    // Never create a method inside a constructor
+    // this.calcAge = function () {
+    //   console.log(2037 - this.birthYear);
+    // };
+  }
+  // Prototypes
+  calcAge() {
+    console.log(2037 - this.birthYear);
+  }
+}
 
 const jonas = new Person('Jonas', 1991);
 
@@ -20,10 +26,6 @@ const matilda = new Person('Matilda', 2001);
 console.log(jonas, matilda);
 console.log(jonas instanceof Person);
 console.log(Person.prototype);
-// Prototypes
-Person.prototype.calcAge = function () {
-  console.log(2037 - this.birthYear);
-};
 
 jonas.calcAge();
 matilda.calcAge();
@@ -45,19 +47,20 @@ console.log(arr.unique());
 const h1 = document.querySelector('h1');
 console.dir(x => x + 1);
 
-const Car = function (make, speed) {
-  this.make = make;
-  this.speed = speed;
-};
-
-Car.prototype.accelerate = function () {
-  this.speed += 10;
-  console.log(`${this.make} is going at ${this.speed} km/h`);
-};
-Car.prototype.brake = function () {
-  this.speed -= 5;
-  console.log(`${this.make} is going at ${this.speed} km/h`);
-};
+class Car {
+  constructor(make, speed) {
+    this.make = make;
+    this.speed = speed;
+  }
+  accelerate() {
+    this.speed += 10;
+    console.log(`${this.make} is going at ${this.speed} km/h`);
+  }
+  brake() {
+    this.speed -= 5;
+    console.log(`${this.make} is going at ${this.speed} km/h`);
+  }
+}
 
 const car1 = new Car('BMW', 120);
 const car2 = new Car('Mercedes', 95);
@@ -74,3 +77,27 @@ car2.brake();
 car2.brake();
 car2.brake();
 car2.brake();
+
+class PersonCL {
+  constructor(firstName, birthYear) {
+    this.firstName = firstName;
+    this.birthYear = birthYear;
+  }
+  // Methods will be added to .prototype property
+  calcAge() {
+    console.log(2037 - this.birthYear);
+  }
+}
+
+const jessica = new PersonCL('Jessica', 1856);
+console.log(jessica);
+jessica.calcAge();
+
+PersonCL.prototype.greet = function () {
+  console.log(`Hey ${this.firstName}`);
+};
+jessica.greet();
+
+// 1. Classes are NOT hoisted
+// 2. Classes are first-class citizens
+// 3. Classes are executed in strict mode
