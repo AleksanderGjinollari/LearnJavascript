@@ -47,36 +47,36 @@
 // const h1 = document.querySelector('h1');
 // console.dir(x => x + 1);
 
-class Car {
-  constructor(make, speed) {
-    this.make = make;
-    this.speed = speed;
-  }
-  accelerate() {
-    this.speed += 10;
-    console.log(`${this.make} is going at ${this.speed} km/h`);
-  }
-  brake() {
-    this.speed -= 5;
-    console.log(`${this.make} is going at ${this.speed} km/h`);
-  }
-}
+// class Car {
+//   constructor(make, speed) {
+//     this.make = make;
+//     this.speed = speed;
+//   }
+//   accelerate() {
+//     this.speed += 10;
+//     console.log(`${this.make} is going at ${this.speed} km/h`);
+//   }
+//   brake() {
+//     this.speed -= 5;
+//     console.log(`${this.make} is going at ${this.speed} km/h`);
+//   }
+// }
 
-const car1 = new Car('BMW', 120);
-const car2 = new Car('Mercedes', 95);
-car1.accelerate();
-car1.accelerate();
-car1.brake();
-car1.brake();
-car1.brake();
-car1.brake();
-car2.accelerate();
-car2.accelerate();
-car2.accelerate();
-car2.brake();
-car2.brake();
-car2.brake();
-car2.brake();
+// const car1 = new Car('BMW', 120);
+// const car2 = new Car('Mercedes', 95);
+// car1.accelerate();
+// car1.accelerate();
+// car1.brake();
+// car1.brake();
+// car1.brake();
+// car1.brake();
+// car2.accelerate();
+// car2.accelerate();
+// car2.accelerate();
+// car2.brake();
+// car2.brake();
+// car2.brake();
+// car2.brake();
 
 class PersonCL {
   constructor(fullName, birthYear) {
@@ -153,35 +153,35 @@ const sarah = Object.create(PersonProto);
 sarah.init('Sarah', 1979);
 sarah.calcAge();
 
-// class PersonCL {
-//   constructor(fullName, birthYear) {
-//     this.fullName = fullName;
-//     this.birthYear = birthYear;
-//   }
-//   // Instance methods
-//   // Methods will be added to .prototype property
-//   calcAge() {
-//     console.log(2037 - this.birthYear);
-//   }
-//   greet = function () {
-//     console.log(`Hey ${this.firstName}`);
-//   };
-//   // Set a property that already exists
-//   set fullName(name) {
-//     if (name.includes(' ')) this._fullName = name;
-//     else alert(`${name} is not a full name!`);
-//   }
+class PersonCl {
+  constructor(fullName, birthYear) {
+    this.fullName = fullName;
+    this.birthYear = birthYear;
+  }
+  // Instance methods
+  // Methods will be added to .prototype property
+  calcAge() {
+    console.log(2037 - this.birthYear);
+  }
+  greet = function () {
+    console.log(`Hey ${this.firstName}`);
+  };
+  // Set a property that already exists
+  set fullName(name) {
+    if (name.includes(' ')) this._fullName = name;
+    else alert(`${name} is not a full name!`);
+  }
 
-//   get fullName() {
-//     return this._fullName;
-//   }
+  get fullName() {
+    return this._fullName;
+  }
 
-//   // Static method
-//   static hey() {
-//     console.log('Hey there ✋');
-//     console.log(this);
-//   }
-// }
+  // Static method
+  static hey() {
+    console.log('Hey there ✋');
+    console.log(this);
+  }
+}
 class CarCL {
   constructor(make, speed) {
     this.make = make;
@@ -236,3 +236,37 @@ mike.introduce();
 mike.calcAge();
 
 console.log(mike.__proto__);
+
+const Car = function (make, speed) {
+  this.make = make;
+  this.speed = speed;
+};
+const EV = function (make, speed, charge) {
+  Car.call(this, make, speed);
+  this.charge = charge;
+};
+EV.prototype.accelerate = function () {
+  this.speed += 20;
+  this.charge--;
+  console.log(
+    `${this.make} is going at ${this.speed} km/h, with a charge of ${this.charge}%`
+  );
+};
+const newTesla = new EV('Tesla', 120, 23);
+console.log(newTesla);
+newTesla.accelerate();
+
+class StudentCl extends PersonCl {
+  constructor(fullName, birthYear, course) {
+    // Always needs to happen first!
+    super(fullName, birthYear);
+    this.course = course;
+  }
+
+  introduce() {
+    console.log(`My name is ${this.firstName} and I study ${this.course}`);
+  }
+}
+
+const martha = new StudentCl('Martha Jones', 2012, 'ComputerScience');
+console.log(martha);
