@@ -1,51 +1,51 @@
 'use strict';
 
-class Person {
-  constructor(firstName, birthYear) {
-    this.firstName = firstName;
-    this.birthYear = birthYear;
-    // Never create a method inside a constructor
-    // this.calcAge = function () {
-    //   console.log(2037 - this.birthYear);
-    // };
-  }
-  // Prototypes
-  calcAge() {
-    console.log(2037 - this.birthYear);
-  }
-}
+// class Person {
+//   constructor(firstName, birthYear) {
+//     this.firstName = firstName;
+//     this.birthYear = birthYear;
+//     // Never create a method inside a constructor
+//     // this.calcAge = function () {
+//     //   console.log(2037 - this.birthYear);
+//     // };
+//   }
+//   // Prototypes
+//   calcAge() {
+//     console.log(2037 - this.birthYear);
+//   }
+// }
 
-const jonas = new Person('Jonas', 1991);
+// const jonas = new Person('Jonas', 1991);
 
 // 1. New {} is created
 // 2. function is called, this = {}
 // 3. {} is linked to prototype
 // 4. function automatically retyrns {}
 
-const matilda = new Person('Matilda', 2001);
-console.log(jonas, matilda);
-console.log(jonas instanceof Person);
-console.log(Person.prototype);
+// const matilda = new Person('Matilda', 2001);
+// console.log(jonas, matilda);
+// console.log(jonas instanceof Person);
+// console.log(Person.prototype);
 
-jonas.calcAge();
-matilda.calcAge();
+// jonas.calcAge();
+// matilda.calcAge();
 
-console.log(jonas.__proto__);
-Person.prototype.species = 'Homo Sapiens';
-console.log(jonas.species);
-// Object.prototype (top of prototype chain)
-console.log(jonas.__proto__.__proto__);
-console.log(Person.prototype.constructor);
-const arr = [3, 6, 4, 5, 6, 9, 3];
-console.log(arr.__proto__);
+// console.log(jonas.__proto__);
+// Person.prototype.species = 'Homo Sapiens';
+// console.log(jonas.species);
+// // Object.prototype (top of prototype chain)
+// console.log(jonas.__proto__.__proto__);
+// console.log(Person.prototype.constructor);
+// const arr = [3, 6, 4, 5, 6, 9, 3];
+// console.log(arr.__proto__);
 
-Array.prototype.unique = function () {
-  return [...new Set(this)];
-};
-console.log(arr.unique());
+// Array.prototype.unique = function () {
+//   return [...new Set(this)];
+// };
+// console.log(arr.unique());
 
-const h1 = document.querySelector('h1');
-console.dir(x => x + 1);
+// const h1 = document.querySelector('h1');
+// console.dir(x => x + 1);
 
 class Car {
   constructor(make, speed) {
@@ -208,3 +208,31 @@ ford.accelerate();
 console.log(ford.speedUS);
 ford.speedUS = 50;
 console.log(ford);
+
+const Person = function (firstName, birthYear) {
+  this.firstName = firstName;
+  this.birthYear = birthYear;
+};
+
+Person.prototype.calcAge = function () {
+  console.log(2037 - this.birthYear);
+};
+
+const Student = function (firstName, birthYear, course) {
+  Person.call(this, firstName, birthYear);
+  this.course = course;
+};
+
+// Linking prototypes
+Student.prototype = Object.create(Person.prototype);
+
+Student.prototype.introduce = function () {
+  console.log(`My name is ${this.firstName} and I study ${this.course}`);
+};
+
+const mike = new Student('Mike', 2012, 'IT');
+console.log(mike);
+mike.introduce();
+mike.calcAge();
+
+console.log(mike.__proto__);
