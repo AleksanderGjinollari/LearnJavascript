@@ -275,3 +275,17 @@ const martha = new StudentCl('Martha Jones', 2012, 'ComputerScience');
 console.log(martha);
 martha.introduce();
 martha.calcAge();
+
+const stevens = Object.create(PersonProto);
+const StudentProto = Object.create(PersonProto);
+StudentProto.init = function (firstName, birthYear, course) {
+  PersonProto.init.call(this, firstName, birthYear);
+  this.course = course;
+};
+const jay = Object.create(StudentProto);
+jay.init('Jay', 2010, 'Computer Science');
+StudentProto.introduce = function () {
+  console.log(`My namem is ${this.firstName} and I study ${this.course}`);
+};
+jay.introduce();
+jay.calcAge();
