@@ -102,11 +102,10 @@ const renderError = function (msg) {
 //   request.open('GET', `https://restcountries.com/v2/name/${country}`);
 //   request.send();
 
-const getJSON = function (url, errorMsg = `Something went wrong`) {
-  return fetch(url).then(response => {
-    if (!response.ok) throw new Error(`${errorMsg} (${response.status})`);
-    return response.json();
-  });
+const getJSON = async function (url, errorMsg = `Something went wrong`) {
+  const response = await fetch(url);
+  if (!response.ok) throw new Error(`${errorMsg} (${response.status})`);
+  return await response.json();
 };
 
 const getCountryData = function (country) {
@@ -119,7 +118,8 @@ const getCountryData = function (country) {
 
       // Country 2
       return getJSON(
-        `https://restcountries.com/v2/alpha/${neighbour}, "Country not found`
+        `https://restcountries.com/v2/alpha/${neighbour}`,
+        'Country not found'
       );
     })
 
@@ -137,14 +137,13 @@ btn.addEventListener('click', function () {
   getCountryData('Albania');
 });
 
-const whereAmI = function (lat, lng) {
-  fetch(`https://geocode.xyz/${lat},${lng}?geoit=json`)
-    .then(response => {
-      if (!response.ok)
-        throw new Error(`Problem with geocoding ${response.status}`);
-      return response.json();
-    })
-    .then(data => console.log(`You are in ${data.city}, ${data.country}`))
-    .catch(err => console.log(`${err.message}`));
-};
-whereAmI(52.508, 13.381);
+// const whereAmI = function (lat, lng) {
+//   fetch(`https://geocode.xyz/${lat},${lng}?geoit=json`)
+//     .then(response => {
+//       if (!response.ok) throw new Error(`Portugal`);
+//       return response.json();
+//     })
+//     .then(data => console.log(`You are in ${data.city}, ${data.country}`))
+//     .catch();
+// };
+// whereAmI(52.508, 13.381);
