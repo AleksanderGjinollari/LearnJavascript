@@ -147,3 +147,10 @@ btn.addEventListener('click', function () {
 //     .catch();
 // };
 // whereAmI(52.508, 13.381);
+
+console.log('Teststart');
+setTimeout(() => {
+  console.log('0 sec timer');
+}, 0);
+Promise.resolve('Resolved promise 1').then(res => console.loc(res));
+console.log('Test end');
