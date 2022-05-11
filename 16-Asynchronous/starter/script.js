@@ -297,21 +297,22 @@ const whereAmI = async function () {
     throw err;
   }
 };
-// console.log('1) Will get location');
-// whereAmI()
-//   .then(city => console.log(city))
-//   .catch(err => console.error(`2: ${err.message}`))
-//   .finally(() => console.log('3) Finished getting location'));
+console.log('1) Will get location');
+whereAmI()(
+  //   .then(city => console.log(city))
+  //   .catch(err => console.error(`2: ${err.message}`))
+  //   .finally(() => console.log('3) Finished getting location'));
 
-(async function () {
-  try {
-    await whereAmI();
-    console.log(`2: ${city}`);
-  } catch (err) {
-    console.error(`2: ${err.message}`);
+  async function () {
+    try {
+      await whereAmI();
+      console.log(`2: ${city}`);
+    } catch (err) {
+      console.error(`2: ${err.message}`);
+    }
+    // console.log(`3: Finished getting location`);
   }
-  // console.log(`3: Finished getting location`);
-})();
+)();
 // try {
 //   let y = 1;
 //   let x = 2;
@@ -375,3 +376,36 @@ Promise.any([
   Promise.reject('Error'),
   Promise.resolve('Another success'),
 ]).then(res => console.log(res));
+
+// PART 1
+// const loadNPause = async function () {
+//   try {
+//     // Load image 1
+//     let img = await createImage('img/img-1.jpg');
+//     console.log('Image 1 loaded');
+//     await wait(2);
+//     img.style.display = 'none';
+
+//     // Load image 1
+//     img = await createImage('img/img-2.jpg');
+//     console.log('Image 2 loaded');
+//     await wait(2);
+//     img.style.display = 'none';
+//   } catch (err) {
+//     console.error(err);
+//   }
+// };
+// loadNPause();
+
+// // PART 2
+// const loadAll = async function (imgArr) {
+//   try {
+//     const imgs = imgArr.map(async img => await createImage(img));
+//     const imgsEl = await Promise.all(imgs);
+//     console.log(imgsEl);
+//     imgsEl.forEach(img => img.classList.add('parallel'));
+//   } catch (err) {
+//     console.error(err);
+//   }
+// };
+// loadAll(['img/img-1.jpg', 'img/img-2.jpg', 'img/img-3.jpg']);
