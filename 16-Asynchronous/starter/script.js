@@ -287,14 +287,31 @@ const whereAmI = async function () {
     const data = await res.json();
     console.log(data);
     renderCountry(data[0]);
+
+    return `You are in ${dataGeo.city}, ${dataGeo.country}`;
   } catch (err) {
     console.log(err);
     renderError(`Something went wrong, ${err}`);
+
+    // Reject promise returned from async function
+    throw err;
   }
 };
-whereAmI();
-console.log('First');
+console.log('1) Will get location');
+// whereAmI()
+//   .then(city => console.log(city))
+//   .catch(err => console.error(`2: ${err.message}`))
+//   .finally(() => console.log('3) Finished getting location'));
 
+(async function () {
+  try {
+    await whereAmI();
+    console.log(`2: ${city}`);
+  } catch (err) {
+    console.error(`2: ${err.message}`);
+  }
+  console.log(`3: Finished getting location`);
+})();
 // try {
 //   let y = 1;
 //   let x = 2;
