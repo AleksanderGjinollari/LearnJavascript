@@ -66,7 +66,7 @@ ShoppingCart2.addToCart('apple', 4);
 ShoppingCart2.addToCart('pizza', 2);
 console.log(ShoppingCart2);
 */
-
+/*
 // Export
 export.addToCart = function (product, quantity) {
   cart.push({ product, quantity });
@@ -77,3 +77,4 @@ export.addToCart = function (product, quantity) {
 
 // Import
 const { addToCart } = require("./shoppingCart.js");
+*/
