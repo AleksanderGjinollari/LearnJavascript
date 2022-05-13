@@ -93,3 +93,4 @@ state.user.loggedIn = false;
 
 console.log(stateClone);
 console.log(stateDeepClone);
+console.log('1');
