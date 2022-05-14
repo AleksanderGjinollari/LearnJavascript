@@ -1,7 +1,7 @@
 // Importing module
 // import { addToCart, totalPrice, totalQuantity } from './shoppingCart.js';
 // console.log('Importing module');
-/*
+
 import * as ShoppingCart from './shoppingCart.js';
 
 ShoppingCart.addToCart('bread', 5);
@@ -17,7 +17,7 @@ console.log(cart);
 // const res = await fetch('https://jsonplaceholder.typicode.com/posts');
 // const data = await res.json();
 // console.log(data);
-
+/*
 const getLastPost = async function () {
   const res = await fetch('https://jsonplaceholder.typicode.com/posts');
   const data = await res.json();
@@ -94,3 +94,30 @@ state.user.loggedIn = false;
 console.log(stateClone);
 console.log(stateDeepClone);
 console.log('1');
+
+if (module.hot) {
+  module.hot.accept();
+}
+
+class Person {
+  greeting = 'Hey';
+  constructor(name) {
+    this.name = name;
+    console.log(`${this.greeting}, ${this.name}`);
+  }
+}
+
+const jonas = new Person('Jonas');
+console.log(jonas);
+
+console.log('Jonas' ?? null);
+
+console.log(cart.find(el => el.quantity >= 2));
+Promise.resolve('TEST').then(x => console.log(x));
+
+import 'core-js/stable';
+// import 'core-js/stable/array/find';
+// import 'core-js/stable/array/promise';
+
+// Polifilling async functions
+import 'regenerator-runtime/runtime';
