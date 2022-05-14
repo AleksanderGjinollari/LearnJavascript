@@ -1,16 +1,25 @@
 {
-  "name": "starter",
+  "name": "modules",
   "version": "1.0.0",
-  "description": "",
-  "main": "clean.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "description": "Modern JS",
+  "default": "index.html",
+  "browserslist": "> 1%, last 2 versions, not dead, not ie 11",
+  "targets": {
+    "main": false
   },
-  "author": "",
+  "scripts": {
+    "start": "parcel index.html",
+    "build": "parcel build index.html --dist-dir ./dist"
+  },
+  "author": "Adakole",
   "license": "ISC",
+  "devDependencies": {
+    "parcel": "^2.5.0"
+  },
   "dependencies": {
+    "core-js": "^3.22.3",
     "leaflet": "^1.8.0",
     "lodash-es": "^4.17.21",
-    "lodash.clonedeep": "^4.5.0"
+    "regenerator-runtime": "^0.13.9"
   }
 }
