@@ -15,7 +15,7 @@ const spendingLimits = Object.freeze({
   matilda: 100,
 });
 
-const getLimit = user => spendingLimits?.[user] ?? 0;
+const getLimit = (limits, user) => limits?.[user] ?? 0;
 
 const addExpense = function (
   state,
@@ -29,7 +29,7 @@ const addExpense = function (
   // const limit = spendingLimits[user] ? spendingLimits[user] : 0;
   // const limit = getLimit(user);
 
-  return value <= getLimit(cleanUser)
+  return value <= getLimit(limits, cleanUser)
     ? [...state, { value: -value, description, user: cleanUser }]
     : state;
 };
@@ -47,22 +47,37 @@ console.log(newBudget1);
 console.log(newBudget2);
 console.log(newBudget3);
 
-const checkExpenses = function () {
-  for (const entry of newBudget3)
-    if (entry.value < -getLimit(entry.user)) entry.flag = 'limit';
+const checkExpenses = (state, limits) => {
+  state.map(entry => {
+    entry.value < -getLimit(limits, entry.user)
+      ? { ...entry, flag: 'limit' }
+      : entry;
+  });
+  // for (const entry of newBudget3)
+  //   if (entry.value < -getLimit(limits, entry.user)) entry.flag = 'limit';
 };
-checkExpenses();
 
-const logBigExpenses = function (bigLimit) {
-  let output = '';
-  for (const entry of budget) {
-    let output = '';
-    for (const entry of budget)
-      output +=
-        entry.value <= -bigLimit ? `${entry.description.slice(-2)} / ` : '';
-  }
-  output = output.slice(0, -2); // Remove last '/ '
-  console.log(output);
+const finalBudget = checkExpenses(newBudget3);
+console.log(finalBudget);
+
+const logBigExpenses = function (state, bigLimit) {
+  const bigExpenses = state
+    .filter(entry => entry.value <= -bigLimit)
+    .reduce((str, cur) => `${str} / ${cur.description.slice(-2)}`, '');
+  // .map(entry => entry.description)
+  // .slice(-2)
+  // .join(' / ');
+  console.log(bigExpenses);
+
+  // let output = '';
+  // for (const entry of budget) {
+  //   let output = '';
+  //   for (const entry of budget)
+  //     output +=
+  //       entry.value <= -bigLimit ? `${entry.description.slice(-2)} / ` : '';
+  // }
+  // output = output.slice(0, -2); // Remove last '/ '
+  // console.log(output);
 };
 console.log(budget);
-logBigExpenses(200);
+logBigExpenses(finalBudget, 500);
